@@ -1,0 +1,1586 @@
+{
+	"info": {
+		"_postman_id": "57239896-2e0d-45b0-8bc4-24560311810e",
+		"name": "Hotel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5044382"
+	},
+	"item": [
+		{
+			"name": "GET hotels",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3005/api/hotels",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"api",
+						"hotels"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_KEY}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_HOST}}/api/hotels",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"hotels"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "833"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"341-Ex6kTn8VKSwBUHJS1MAt/fS01Zo\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 24 Nov 2025 09:44:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Hotels retrieved successfully\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Tino house\",\n            \"country\": \"Vietnam\",\n            \"city\": \"Ho Chi Minh\",\n            \"address\": \"16/36 No 6\",\n            \"latitude\": 100,\n            \"longitude\": 2,\n            \"is_available\": true,\n            \"images\": [],\n            \"description\": \"This is sample description\",\n            \"rating\": 4.5,\n            \"created_at\": null,\n            \"updated_at\": null,\n            \"rooms\": [\n                {\n                    \"id\": 1,\n                    \"name\": \"101\",\n                    \"type\": \"single\",\n                    \"price\": 2000,\n                    \"is_available\": true\n                },\n                {\n                    \"id\": 2,\n                    \"name\": \"102\",\n                    \"type\": \"single\",\n                    \"price\": 2000,\n                    \"is_available\": true\n                },\n                {\n                    \"id\": 3,\n                    \"name\": \"201\",\n                    \"type\": \"double\",\n                    \"price\": 2500,\n                    \"is_available\": true\n                }\n            ]\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Test create\",\n            \"country\": \"Vietnam\",\n            \"city\": \"Ho Chi Minh\",\n            \"address\": \"88 Thu Duc\",\n            \"latitude\": 21.0285,\n            \"longitude\": 105.8048,\n            \"is_available\": true,\n            \"images\": [],\n            \"description\": \"Nice hotel\",\n            \"rating\": 4.5,\n            \"created_at\": \"2025-11-24T05:34:25.074Z\",\n            \"updated_at\": \"2025-11-24T05:34:25.074Z\",\n            \"rooms\": []\n        }\n    ]\n}"
+				},
+				{
+					"name": "400 Invalid request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_KEY}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_HOST}}/api/hotels?page=abc",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"hotels"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "abc"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "162"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a2-pZEXpQVz4BMYn1aep0bHRyVLf64\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 24 Nov 2025 09:45:17 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"Validation errors\",\n    \"errors\": [\n        {\n            \"type\": \"field\",\n            \"value\": \"abc\",\n            \"msg\": \"Page must be a positive integer\",\n            \"path\": \"page\",\n            \"location\": \"query\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "401 Unauthorized",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}/api/hotels",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"hotels"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "70"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"46-nhrso4n98AmFgWLeAaagaRwXGOM\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 25 Nov 2025 16:02:05 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"Unauthorized: Invalid or missing API key\"\n}"
+				}
+			]
+		},
+		{
+			"name": "POST Create a new hotel.",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{USER_KEY}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Test create\",\n  \"country\": \"Vietnam\",\n  \"city\": \"Ho Chi Minh\",\n  \"address\": \"88 Thu Duc\",\n  \"latitude\": 21.0285,\n  \"longitude\": 105.8048,\n  \"is_available\": true,\n  \"description\": \"Nice hotel\",\n  \"rating\": 4.5,\n  \"images\": []\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_HOST}}/api/hotels",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"api",
+						"hotels"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "201 OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ADMIN_KEY}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Test create 3\",\n  \"country\": \"Vietnam\",\n  \"city\": \"Ho Chi Minh\",\n  \"address\": \"88 Thu Duc\",\n  \"latitude\": 21.0285,\n  \"longitude\": 105.8048,\n  \"is_available\": true,\n  \"description\": \"Nice hotel\",\n  \"rating\": 4.5,\n  \"images\": []\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/hotels",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"hotels"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "350"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"15e-24adQLpgXHyg5wOrt3JXwATnQcw\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 24 Nov 2025 10:14:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Hotel created successfully\",\n    \"data\": {\n        \"created_at\": \"2025-11-24T10:14:28.794Z\",\n        \"updated_at\": \"2025-11-24T10:14:28.794Z\",\n        \"id\": 9,\n        \"name\": \"Test create 3\",\n        \"country\": \"Vietnam\",\n        \"city\": \"Ho Chi Minh\",\n        \"address\": \"88 Thu Duc\",\n        \"latitude\": 21.0285,\n        \"longitude\": 105.8048,\n        \"is_available\": true,\n        \"description\": \"Nice hotel\",\n        \"rating\": 4.5,\n        \"images\": []\n    }\n}"
+				},
+				{
+					"name": "400 Invalid Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ADMIN_KEY}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Test create 3\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/hotels?=",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"hotels"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": ""
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "622"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"26e-Sis3zLw+EST+mjGQba+mnWb5gzQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 24 Nov 2025 10:14:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"Validation errors\",\n    \"errors\": [\n        {\n            \"type\": \"field\",\n            \"value\": \"\",\n            \"msg\": \"Country is required\",\n            \"path\": \"country\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"value\": \"\",\n            \"msg\": \"City is required\",\n            \"path\": \"city\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"value\": \"\",\n            \"msg\": \"Address is required\",\n            \"path\": \"address\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"msg\": \"Latitude must be between -90 and 90\",\n            \"path\": \"latitude\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"msg\": \"Longitude must be between -180 and 180\",\n            \"path\": \"longitude\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"value\": \"\",\n            \"msg\": \"Description is required\",\n            \"path\": \"description\",\n            \"location\": \"body\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "401 Unauthorized",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Test create\",\n  \"country\": \"Vietnam\",\n  \"city\": \"Ho Chi Minh\",\n  \"address\": \"88 Thu Duc\",\n  \"latitude\": 21.0285,\n  \"longitude\": 105.8048,\n  \"is_available\": true,\n  \"description\": \"Nice hotel\",\n  \"rating\": 4.5,\n  \"images\": []\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/hotels",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"hotels"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "70"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"46-nhrso4n98AmFgWLeAaagaRwXGOM\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 25 Nov 2025 16:08:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"Unauthorized: Invalid or missing API key\"\n}"
+				},
+				{
+					"name": "403 Forbidden",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_KEY}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Test create\",\n  \"country\": \"Vietnam\",\n  \"city\": \"Ho Chi Minh\",\n  \"address\": \"88 Thu Duc\",\n  \"latitude\": 21.0285,\n  \"longitude\": 105.8048,\n  \"is_available\": true,\n  \"description\": \"Nice hotel\",\n  \"rating\": 4.5,\n  \"images\": []\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/hotels",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"hotels"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "90"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5a-LLRFKI1R9Z4jgWMQu1HF27M5If4\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 25 Nov 2025 16:18:31 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"Forbidden: You do not have permission to perform this action\"\n}"
+				}
+			]
+		},
+		{
+			"name": "GET hotels/:id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{USER_KEY}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{API_HOST}}/api/hotels/8",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"api",
+						"hotels",
+						"8"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{USER_KEY}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_HOST}}/api/hotels/6",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"6"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "361"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"169-KJ1P3JwMvI8lL00HuRnPh5cYFns\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 24 Nov 2025 09:49:12 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Hotel retrieved successfully\",\n    \"data\": {\n        \"id\": 6,\n        \"name\": \"Test create\",\n        \"country\": \"Vietnam\",\n        \"city\": \"Ho Chi Minh\",\n        \"address\": \"88 Thu Duc\",\n        \"latitude\": 21.0285,\n        \"longitude\": 105.8048,\n        \"is_available\": true,\n        \"images\": [],\n        \"description\": \"Nice hotel\",\n        \"rating\": 4.5,\n        \"created_at\": \"2025-11-24T09:47:53.052Z\",\n        \"updated_at\": \"2025-11-24T09:47:53.053Z\",\n        \"rooms\": []\n    }\n}"
+				},
+				{
+					"name": "400 Invalid Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{USER_KEY}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_HOST}}/api/hotels/abc",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"abc"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "165"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a5-cVG0ob/g65PugsKEAwtNVPbPxeU\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 24 Nov 2025 10:11:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"Validation errors\",\n    \"errors\": [\n        {\n            \"type\": \"field\",\n            \"value\": \"abc\",\n            \"msg\": \"Hotel ID must be a positive integer\",\n            \"path\": \"id\",\n            \"location\": \"params\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "401 Unauthorized",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}/api/hotels/3",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"3"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "70"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"46-nhrso4n98AmFgWLeAaagaRwXGOM\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 25 Nov 2025 16:20:07 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"Unauthorized: Invalid or missing API key\"\n}"
+				},
+				{
+					"name": "404 Not Found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_KEY}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_HOST}}/api/hotels/8",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"8"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2d-dOFDtuYIlSqWX3q1SHaDhu/wbmQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 25 Nov 2025 16:23:48 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"Hotel not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "PUT hotels/:id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{ADMIN_KEY}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"rating\": 1\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_HOST}}/api/hotels/8",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"api",
+						"hotels",
+						"8"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ADMIN_KEY}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Test update\",\n  \"city\": \"Da Nang\",\n  \"rating\": 4,\n  \"is_available\": false,\n  \"description\": \"Updated description\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/hotels/6",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"6"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "352"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"160-SMxC9gtoAS5xY36rKIIyMw9FgY0\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 24 Nov 2025 09:55:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Hotel updated successfully\",\n    \"data\": {\n        \"id\": 6,\n        \"name\": \"Test update\",\n        \"country\": \"Vietnam\",\n        \"city\": \"Da Nang\",\n        \"address\": \"88 Thu Duc\",\n        \"latitude\": 21.0285,\n        \"longitude\": 105.8048,\n        \"is_available\": false,\n        \"images\": [],\n        \"description\": \"Updated description\",\n        \"rating\": 4,\n        \"created_at\": \"2025-11-24T09:47:53.052Z\",\n        \"updated_at\": \"2025-11-24T09:55:34.301Z\"\n    }\n}"
+				},
+				{
+					"name": "400 Invalid Request",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ADMIN_KEY}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"rating\": \"abc\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/hotels/6?rating=abc",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"6"
+							],
+							"query": [
+								{
+									"key": "rating",
+									"value": "abc"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "162"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a2-Lg+8RTaBJJCBLqY+tjw1XsEVdiA\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 24 Nov 2025 10:00:36 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"Validation errors\",\n    \"errors\": [\n        {\n            \"type\": \"field\",\n            \"value\": \"abc\",\n            \"msg\": \"Rating must be between 0 and 5\",\n            \"path\": \"rating\",\n            \"location\": \"body\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "401 Unauthorized",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"rating\": \"abc\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/hotels/6?rating=abc",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"6"
+							],
+							"query": [
+								{
+									"key": "rating",
+									"value": "abc"
+								}
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "70"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"46-nhrso4n98AmFgWLeAaagaRwXGOM\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 25 Nov 2025 16:24:33 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"Unauthorized: Invalid or missing API key\"\n}"
+				},
+				{
+					"name": "403 Forbidden",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_KEY}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"rating\": \"abc\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/hotels/6?rating=abc",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"6"
+							],
+							"query": [
+								{
+									"key": "rating",
+									"value": "abc"
+								}
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "90"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5a-LLRFKI1R9Z4jgWMQu1HF27M5If4\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 25 Nov 2025 16:24:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"Forbidden: You do not have permission to perform this action\"\n}"
+				},
+				{
+					"name": "404 Not Found",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ADMIN_KEY}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"rating\": 1\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_HOST}}/api/hotels/8",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"8"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2d-dOFDtuYIlSqWX3q1SHaDhu/wbmQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 25 Nov 2025 16:26:12 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"Hotel not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "DELETE hotels/:id`",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{ADMIN_KEY}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{API_HOST}}/api/hotels/8",
+					"host": [
+						"{{API_HOST}}"
+					],
+					"path": [
+						"api",
+						"hotels",
+						"8"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 OK",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ADMIN_KEY}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_HOST}}/api/hotels/7",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"7"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "55"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"37-OQck3Ai2N59Kc7JnLBbToKT5gWM\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 24 Nov 2025 10:12:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Hotel deleted successfully\"\n}"
+				},
+				{
+					"name": "400 Invalid Request",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ADMIN_KEY}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_HOST}}/api/hotels/abc",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"abc"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "Text",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "165"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a5-cVG0ob/g65PugsKEAwtNVPbPxeU\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 24 Nov 2025 10:13:53 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"Validation errors\",\n    \"errors\": [\n        {\n            \"type\": \"field\",\n            \"value\": \"abc\",\n            \"msg\": \"Hotel ID must be a positive integer\",\n            \"path\": \"id\",\n            \"location\": \"params\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "401 Unauthorized",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_HOST}}/api/hotels/3",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"3"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "70"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"46-nhrso4n98AmFgWLeAaagaRwXGOM\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 25 Nov 2025 16:27:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"Unauthorized: Invalid or missing API key\"\n}"
+				},
+				{
+					"name": "403 Forbidden",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{USER_KEY}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_HOST}}/api/hotels/3",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"3"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "90"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5a-LLRFKI1R9Z4jgWMQu1HF27M5If4\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 25 Nov 2025 16:28:07 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"Forbidden: You do not have permission to perform this action\"\n}"
+				},
+				{
+					"name": "404 Not Found",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ADMIN_KEY}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_HOST}}/api/hotels/8",
+							"host": [
+								"{{API_HOST}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"8"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2d-dOFDtuYIlSqWX3q1SHaDhu/wbmQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 25 Nov 2025 16:29:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"message\": \"Hotel not found\"\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "API_HOST",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "ADMIN_KEY",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "USER_KEY",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
